@@ -86,7 +86,7 @@ jobs:
         - name: checkout code
           uses: actions/checkout@v4
           with:
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }} ##需要提交（push）更新回遠端 → 必須顯式使用具有寫入權限的 GITHUB_TOKEN
 
         - name: Update tag in kubernetes deployment manifest
           run: | 
