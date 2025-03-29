@@ -1,103 +1,118 @@
-**Note:** This project is a fork of `opentelemetry-demo`. Thanks to the team and contributors for opensourcing this wonderful demo project. Definitely one of the best on internet.
+# DevOps 微服務電商應用展示專案
 
-<!-- markdownlint-disable-next-line -->
-# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry Demo
+![Last Updated](https://img.shields.io/badge/最後更新-2025年3月29日-blue)
 
-[![Slack](https://img.shields.io/badge/slack-@cncf/otel/demo-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C03B4CWV4DA)
-[![Version](https://img.shields.io/github/v/release/open-telemetry/opentelemetry-demo?color=blueviolet)](https://github.com/open-telemetry/opentelemetry-demo/releases)
-[![Commits](https://img.shields.io/github/commits-since/open-telemetry/opentelemetry-demo/latest?color=ff69b4&include_prereleases)](https://github.com/open-telemetry/opentelemetry-demo/graphs/commit-activity)
-[![Downloads](https://img.shields.io/docker/pulls/otel/demo)](https://hub.docker.com/r/otel/demo)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=red)](https://github.com/open-telemetry/opentelemetry-demo/blob/main/LICENSE)
-[![Integration Tests](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml/badge.svg)](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml)
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/opentelemetry-demo)](https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-demo)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9247/badge)](https://www.bestpractices.dev/en/projects/9247)
+## 目錄
+1. [專案介紹](#專案介紹)  
+2. [微服務架構](#微服務架構請點擊圖片以放大檢視)  
+3. [技術堆疊](#技術堆疊)  
+4. [DevOps 流程說明](#devops-流程說明請點擊圖片以放大檢視)  
+5. [快速開始](#快速開始)  
+6. [程式碼來源](#程式碼來源)
 
-## Welcome to the OpenTelemetry Astronomy Shop Demo
+---
 
-This repository contains the OpenTelemetry Astronomy Shop, a microservice-based
-distributed system intended to illustrate the implementation of OpenTelemetry in
-a near real-world environment.
+## 專案介紹
+這是一個電商展示專案，採用多語言微服務（Java、Python、Golang）為核心，結合 **Docker、Kubernetes、GitHub Actions、Argo CD** 等工具，實踐容器化與自動化 **CI/CD** 流程。  
+- **電商場景**：展示典型電商應用的複雜度（如訂單管理、商品服務、推薦系統等），驗證微服務架構的彈性與可維運性。  
+- **DevOps 與 GitOps**：從程式碼提交、品質檢測、Docker Build & Push，到 Kubernetes 叢集部署與自動更新，展現持續整合（CI）與持續交付（CD）的最佳實踐。
 
-Our goals are threefold:
+---
 
-- Provide a realistic example of a distributed system that can be used to
-  demonstrate OpenTelemetry instrumentation and observability.
-- Build a base for vendors, tooling authors, and others to extend and
-  demonstrate their OpenTelemetry integrations.
-- Create a living example for OpenTelemetry contributors to use for testing new
-  versions of the API, SDK, and other components or enhancements.
+## 微服務架構（請點擊圖片以放大檢視）
+<img width="919" alt="image" src="https://github.com/user-attachments/assets/7991fa70-dc82-4fff-af3b-7d4591b08e5f" />
 
-We've already made [huge
-progress](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md),
-and development is ongoing. We hope to represent the full feature set of
-OpenTelemetry across its languages in the future.
+#### 本專案由多人協作完成，所有下列服務皆可於此專案中部署與測試。
+#### 為方便讀者了解開發分工，特別標示「由本人開發」或「由其他開發者開發」。
 
-If you'd like to help (**which we would love**), check out our [contributing
-guidance](./CONTRIBUTING.md).
+### 由本人開發
+- **Product-Catalog**：產品目錄服務，管理產品資訊  
+- **Ad**：廣告服務，管理平台廣告投放  
+- **Recommendation**：產品推薦服務，提供個性化推薦  
 
-If you'd like to extend this demo or maintain a fork of it, read our
-[fork guidance](https://opentelemetry.io/docs/demo/forking/).
+### 由其他開發者開發
+- **Cart**：購物車服務，處理用戶購物車操作  
+- **Checkout**：結帳流程服務，處理訂單生成流程  
+- **Payment**：支付處理服務，處理交易與支付流程  
+- **Shipping**：配送服務，處理物流和運輸管理  
+- **Email**：電子郵件通知服務，負責系統郵件發送  
+- **Currency**：貨幣轉換服務，處理多幣種支持  
+- **Fraud-Detection**：詐騙檢測服務，識別可疑交易  
+- **Image-Provider**：圖片提供服務，管理產品圖片資源  
+- **Quote**：報價服務，提供動態定價  
+- **Accounting**：會計服務，處理財務與記賬  
+- **React-Native-App**：行動裝置前端服務，提供手機端體驗
+- **Kafka**：事件訊息佇列服務，實現服務間通信  
+- **Load-Generator**：負載測試服務，模擬用戶流量  
+- **Prometheus**：時序資料庫，收集和存儲監控指標  
+- **Grafana**：資料視覺化儀表板，展示系統指標  
+- **OTel-Collector**：OpenTelemetry 收集器，處理遙測資料收集  
 
-## Quick start
+---
 
-You can be up and running with the demo in a few minutes. Check out the docs for
-your preferred deployment method:
+## 技術堆疊
 
-- [Docker](https://opentelemetry.io/docs/demo/docker_deployment/)
-- [Kubernetes](https://opentelemetry.io/docs/demo/kubernetes_deployment/)
+### 開發語言
+- Java  
+- Golang  
+- Python  
 
-## Documentation
+### DevOps 工具
+- **容器化**：Docker  
+- **協調管理**：Kubernetes  
+- **版本控制**：Git / GitHub  
+- **CI/CD**：  
+  - GitHub Actions（持續整合）  
+  - Argo CD（持續部署）
 
-For detailed documentation, see [Demo Documentation][docs]. If you're curious
-about a specific feature, the [docs landing page][docs] can point you in the
-right direction.
+---
 
-## Demos featuring the Astronomy Shop
+## DevOps 流程說明（請點擊圖片以放大檢視）
+![Editor _ Mermaid Chart-2025-03-29-111006](https://github.com/user-attachments/assets/034b4cb0-9886-49a4-8a0e-19fa25b225f0)
 
-We welcome any vendor to fork the project to demonstrate their services and
-adding a link below. The community is committed to maintaining the project and
-keeping it up to date for you.
 
-|                           |                |                                  |
-|---------------------------|----------------|----------------------------------|
-| [AlibabaCloud LogService] | [Elastic]      | [OpenSearch]                     |
-| [AppDynamics]             | [Google Cloud] | [Sentry]                         |
-| [Aspecto]                 | [Grafana Labs] | [ServiceNow Cloud Observability] |
-| [Axiom]                   | [Guance]       | [Splunk]                         |
-| [Axoflow]                 | [Honeycomb.io] | [Sumo Logic]                     |
-| [Azure Data Explorer]     | [Instana]      | [TelemetryHub]                   |
-| [Coralogix]               | [Kloudfuse]    | [Teletrace]                      |
-| [Dash0]                   | [Liatrio]      | [Tracetest]                      |
-| [Datadog]                 | [Logz.io]      | [Uptrace]                        |
-| [Dynatrace]               | [New Relic]    |                                  |
+### 本專案實現了一站式 CI/CD 自動化流程，從程式碼提交到部署無需人工介入：
+1. **開發人員提交代碼**  
+   - 將變更推送至 GitHub 儲存庫  
+2. **觸發 GitHub Actions**  
+   - 執行程式碼品質檢查  
+   - 建構容器映像  
+   - 推送映像至容器儲存庫  
+   - 更新 Kubernetes Deployment 設定檔  
+3. **Argo CD 監控映像更新**  
+   - 每三分鐘偵測 GitHub 儲存庫的變更  
+   - 自動更新 Kubernetes 資源並套用新的部署設定  
 
-## Contributing
+---
 
-To get involved with the project see our [CONTRIBUTING](CONTRIBUTING.md)
-documentation. Our [SIG Calls](CONTRIBUTING.md#join-a-sig-call) are every other
-Monday at 8:30 AM PST and anyone is welcome.
+## 快速開始
 
-## Project leadership
+### 本地開發環境
 
-[Maintainers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer)
-([@open-telemetry/demo-maintainers](https://github.com/orgs/open-telemetry/teams/demo-maintainers)):
+1. **複製儲存庫**  
+   ```bash
+   git clone https://github.com/yourusername/devops-demo.git
+   cd devops-demo
+   ```
+2. **使用 Docker Compose 啟動本地環境**  
+   ```bash
+   docker-compose up
+   ```
 
-- [Juliano Costa](https://github.com/julianocosta89), Datadog
-- [Mikko Viitanen](https://github.com/mviitane), Dynatrace
-- [Pierre Tessier](https://github.com/puckpuck), Honeycomb
+### Kubernetes 部署
 
-[Approvers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver)
-([@open-telemetry/demo-approvers](https://github.com/orgs/open-telemetry/teams/demo-approvers)):
+1. **應用 Kubernetes 資源**  
+   ```bash
+   kubectl apply -f kubernetes/complete-deploy.yaml
+   ```
+2. **訪問應用程式**  
+   ```bash
+   kubectl port-forward svc/opentelemetry-demo-frontendproxy 8080:8080
+   ```
+   在瀏覽器中開啟 [http://localhost:8080](http://localhost:8080)
 
-- [Cedric Ziel](https://github.com/cedricziel) Grafana Labs
-- [Penghan Wang](https://github.com/wph95), AppDynamics
-- [Reiley Yang](https://github.com/reyang), Microsoft
-- [Roger Coll](https://github.com/rogercoll), Elastic
-- [Ziqi Zhao](https://github.com/fatsheep9146), Alibaba
+---
 
-Emeritus:
+## 程式碼來源
 
-- [Austin Parker](https://github.com/austinlparker)
-- [Carter Socha](https://github.com/cartersocha)
-- [Michael Maxwell](https://github.com/mic-max)
-- [Morgan McLean](https://github.com/mtwo)
+- [opentelemetry.io](https://opentelemetry.io/)
