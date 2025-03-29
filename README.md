@@ -68,8 +68,7 @@
 ---
 
 ## DevOps 流程說明（請點擊圖片以放大檢視）
-![Editor _ Mermaid Chart-2025-03-29-111006](https://github.com/user-attachments/assets/034b4cb0-9886-49a4-8a0e-19fa25b225f0)
-
+![DevOps 流程-2025-03-29-113549](https://github.com/user-attachments/assets/2a35aaf3-e947-4f18-b3b6-d5b810d2765b)
 
 ### 本專案實現了一站式 CI/CD 自動化流程，從程式碼提交到部署無需人工介入：
 1. **開發人員提交代碼**  
