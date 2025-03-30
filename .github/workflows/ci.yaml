@@ -77,6 +77,7 @@ jobs:
             tags: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{ github.run_id }}
             platforms: linux/amd64,linux/arm64
      
+            
     updatek8s:
         runs-on: ubuntu-latest
 
