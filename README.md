@@ -1,24 +1,3 @@
-# DevOps 微服務電商應用展示專案
-
-![Last Updated](https://img.shields.io/badge/最後更新-2025年3月29日-blue)
-
-## 目錄
-1. [專案介紹](#專案介紹)  
-2. [微服務架構](#微服務架構請點擊圖片以放大檢視)  
-3. [技術堆疊](#技術堆疊)  
-4. [DevOps 流程說明](#devops-流程說明請點擊圖片以放大檢視)  
-5. [快速開始](#快速開始)  
-6. [程式碼來源](#程式碼來源)
-
----
-
-## 專案介紹
-這是一個電商展示專案，採用多語言微服務（Java、Python、Golang）為核心，結合 **Docker、Kubernetes、GitHub Actions、Argo CD** 等工具，實踐容器化與自動化 **CI/CD** 流程。  
-- **電商場景**：展示典型電商應用的複雜度（如訂單管理、商品服務、推薦系統等），驗證微服務架構的彈性與可維運性。  
-- **DevOps 與 GitOps**：從程式碼提交、品質檢測、Docker Build & Push，到 Kubernetes 叢集部署與自動更新，展現持續整合（CI）與持續交付（CD）的最佳實踐。
-
----
-
 ## 微服務架構（請點擊圖片以放大檢視）
 <img width="919" alt="image" src="https://github.com/user-attachments/assets/7991fa70-dc82-4fff-af3b-7d4591b08e5f" />
 
@@ -51,11 +30,6 @@
 ---
 
 ## 技術堆疊
-
-### 開發語言
-- Java  
-- Golang  
-- Python  
 
 ### DevOps 工具
 - **容器化**：Docker  
