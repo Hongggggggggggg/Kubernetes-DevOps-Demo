@@ -1,92 +1,92 @@
-## 微服務架構（請點擊圖片以放大檢視）
+<!-- filepath: /Users/ryan900911/Desktop/Github/Kubernetes-DevOps-Demo/README.md -->
+## Microservice Architecture (Click on the image to enlarge)
 <img width="919" alt="image" src="https://github.com/user-attachments/assets/7991fa70-dc82-4fff-af3b-7d4591b08e5f" />
 
-#### 本專案由多人協作完成，所有下列服務皆可於此專案中部署與測試。
-#### 為方便讀者了解開發分工，特別標示「由本人開發」或「由其他開發者開發」。
+#### This project was completed through collaboration among multiple developers. All services listed below can be deployed and tested within this project.
 
-### 由本人開發
-- **Product-Catalog**：產品目錄服務，管理產品資訊  
-- **Ad**：廣告服務，管理平台廣告投放  
-- **Recommendation**：產品推薦服務，提供個性化推薦  
+### Developed by me
+- **Product-Catalog**: Product catalog service, manages product information  
+- **Ad**: Advertising service, manages platform ad delivery  
+- **Recommendation**: Product recommendation service, provides personalized recommendations  
 
-### 由其他開發者開發
-- **Cart**：購物車服務，處理用戶購物車操作  
-- **Checkout**：結帳流程服務，處理訂單生成流程  
-- **Payment**：支付處理服務，處理交易與支付流程  
-- **Shipping**：配送服務，處理物流和運輸管理  
-- **Email**：電子郵件通知服務，負責系統郵件發送  
-- **Currency**：貨幣轉換服務，處理多幣種支持  
-- **Fraud-Detection**：詐騙檢測服務，識別可疑交易  
-- **Image-Provider**：圖片提供服務，管理產品圖片資源  
-- **Quote**：報價服務，提供動態定價  
-- **Accounting**：會計服務，處理財務與記賬  
-- **React-Native-App**：行動裝置前端服務，提供手機端體驗
-- **Kafka**：事件訊息佇列服務，實現服務間通信  
-- **Load-Generator**：負載測試服務，模擬用戶流量  
-- **Prometheus**：時序資料庫，收集和存儲監控指標  
-- **Grafana**：資料視覺化儀表板，展示系統指標  
-- **OTel-Collector**：OpenTelemetry 收集器，處理遙測資料收集  
-
----
-
-## 技術堆疊
-
-### DevOps 工具
-- **容器化**：Docker  
-- **協調管理**：Kubernetes  
-- **版本控制**：Git / GitHub  
-- **CI/CD**：  
-  - GitHub Actions（持續整合）  
-  - Argo CD（持續部署）
+### Developed by other developers
+- **Cart**: Shopping cart service, handles user cart operations  
+- **Checkout**: Checkout process service, handles order generation workflow  
+- **Payment**: Payment processing service, handles transactions and payment flows  
+- **Shipping**: Shipping service, handles logistics and transportation management  
+- **Email**: Email notification service, responsible for system email delivery  
+- **Currency**: Currency conversion service, handles multi-currency support  
+- **Fraud-Detection**: Fraud detection service, identifies suspicious transactions  
+- **Image-Provider**: Image provider service, manages product image resources  
+- **Quote**: Quotation service, provides dynamic pricing  
+- **Accounting**: Accounting service, handles finances and bookkeeping  
+- **React-Native-App**: Mobile frontend service, provides mobile experience
+- **Kafka**: Event message queue service, enables inter-service communication  
+- **Load-Generator**: Load testing service, simulates user traffic  
+- **Prometheus**: Time series database, collects and stores monitoring metrics  
+- **Grafana**: Data visualization dashboard, displays system metrics  
+- **OTel-Collector**: OpenTelemetry collector, handles telemetry data collection  
 
 ---
 
-## DevOps 流程說明（請點擊圖片以放大檢視）
-![DevOps 流程-2025-03-29-113549](https://github.com/user-attachments/assets/2a35aaf3-e947-4f18-b3b6-d5b810d2765b)
+## Technology Stack
 
-### 本專案實現了一站式 CI/CD 自動化流程，從程式碼提交到部署無需人工介入：
-1. **開發人員提交代碼**  
-   - 將變更推送至 GitHub 儲存庫
-   - 提交 Pull Request 
-2. **觸發 GitHub Actions**  
-   - 執行程式碼品質檢查  
-   - 建構容器映像  
-   - 推送映像至容器儲存庫  
-   - 更新 Kubernetes Deployment 設定檔  
-3. **Argo CD 監控映像更新**  
-   - 每三分鐘偵測 GitHub 儲存庫的變更  
-   - 自動更新 Kubernetes 資源並套用新的部署設定  
+### DevOps Tools
+- **Containerization**: Docker  
+- **Orchestration**: Kubernetes  
+- **Version Control**: Git / GitHub  
+- **CI/CD**:  
+  - GitHub Actions (Continuous Integration)  
+  - Argo CD (Continuous Deployment)
 
 ---
 
-## 快速開始
+## DevOps Process (Click on the image to enlarge)
+![DevOps Process-2025-03-29-113549](https://github.com/user-attachments/assets/2a35aaf3-e947-4f18-b3b6-d5b810d2765b)
 
-### 本地開發環境
+### This project implements a one-stop CI/CD automation process, from code submission to deployment without manual intervention:
+1. **Developer Code Submission**  
+   - Push changes to GitHub repository
+   - Submit Pull Request 
+2. **Trigger GitHub Actions**  
+   - Execute code quality checks  
+   - Build container images  
+   - Push images to container repository  
+   - Update Kubernetes Deployment configuration files  
+3. **Argo CD Monitor Image Updates**  
+   - Detect changes in GitHub repository every three minutes  
+   - Automatically update Kubernetes resources and apply new deployment configurations  
 
-1. **複製儲存庫**  
+---
+
+## Quick Start
+
+### Local Development Environment
+
+1. **Clone Repository**  
    ```bash
    git clone https://github.com/Hongggggggggggg/devops-demo.git
    cd devops-demo
    ```
-2. **使用 Docker Compose 啟動本地環境**  
+2. **Start Local Environment with Docker Compose**  
    ```bash
    docker-compose up
    ```
 
-### Kubernetes 部署
+### Kubernetes Deployment
 
-1. **應用 Kubernetes 資源**  
+1. **Apply Kubernetes Resources**  
    ```bash
    kubectl apply -f kubernetes/complete-deploy.yaml
    ```
-2. **訪問應用程式**  
+2. **Access the Application**  
    ```bash
    kubectl port-forward svc/opentelemetry-demo-frontendproxy 8080:8080
    ```
-   在瀏覽器中開啟 [http://localhost:8080](http://localhost:8080)
+   Open [http://localhost:8080](http://localhost:8080) in your browser
 
 ---
 
-## 程式碼來源
+## Code Source
 
 - [opentelemetry.io](https://opentelemetry.io/)
