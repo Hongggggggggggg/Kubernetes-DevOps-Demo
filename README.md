@@ -65,8 +65,8 @@
 
 1. **Clone Repository**  
    ```bash
-   git clone https://github.com/Hongggggggggggg/devops-demo.git
-   cd devops-demo
+   https://github.com/Hongggggggggggg/Kubernetes-DevOps-Demo.git
+   cd Kubernetes-DevOps-Demo
    ```
 2. **Start Local Environment with Docker Compose**  
    ```bash
